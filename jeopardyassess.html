@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jeopardy Game</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<h1>Jeopardy Game</h1>
+
+<table id="game-board">
+  <thead>
+    <tr>
+      <th>Category 1</th>
+      <th>Category 2</th>
+      <th>Category 3</th>
+      <th>Category 4</th>
+      <th>Category 5</th>
+      <th>Category 6</th>
+    </tr>
+  </thead>
+  <tbody id="board-body">
+    <!-- Game board cells will be dynamically generated here -->
+  </tbody>
+</table>
+
+<button id="restart-btn">Restart</button>
+
+<script>
+  $(document).ready(function() {
+    // Function to fetch random categories and questions
+    function fetchCategoriesAndQuestions() {
+      $.ajax({
+        url: 'http://jservice.io/api/categories?count=6', // Fetch 6 random categories
+        method: 'GET',
+        success: function(categories) {
+          categories.forEach(function(category) {
+            $.ajax({
+              url: `http://jservice.io/api/clues?category=${category.id}`,
+              method: 'GET',
+              success: function(questions) {
+                // Render questions on the game board
+                renderQuestions(category.title, questions);
+              }
+            });
+          });
+        }
+      });
+    }
+
+    // Function to render questions on the game board
+    function renderQuestions(category, questions) {
+      var row = $('<tr>');
+      questions.forEach(function(question) {
+        var cell = $('<td>').text('?').data('question', question.question).data('answer', question.answer).addClass('clue');
+        row.append(cell);
+      });
+      $('#board-body').append(row);
+    }
+
+    // Event handler for clicking on a clue
+    $(document).on('click', '.clue', function() {
+      var $this = $(this);
+      var question = $this.data('question');
+      if (question) {
+        $this.text(question).removeClass('clue').addClass('question');
+      }
+    });
+
+    // Event handler for clicking on a question
+    $(document).on('click', '.question', function() {
+      var $this = $(this);
+      var answer = $this.data('answer');
+      if (answer) {
+        $this.text(answer).removeClass('question').addClass('answer');
+      }
+    });
+
+    // Event handler for clicking the restart button
+    $('#restart-btn').click(function() {
+      $('#board-body').empty(); // Clear the game board
+      fetchCategoriesAndQuestions(); // Fetch new categories and questions
+    });
+
+    // Initial setup: fetch categories and questions
+    fetchCategoriesAndQuestions();
+  });
+</script>
+
+</body>
+</html>
