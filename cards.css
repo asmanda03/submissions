@@ -1,0 +1,41 @@
+.Card {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+  
+
+  .Deck {
+    text-align: center;
+  }
+  
+  .Deck-gimme {
+    padding: 15px;
+    background-color: black;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    margin: 0 10px;
+  }
+  
+  .Deck-gimme:hover {
+    cursor: pointer;
+    background-color: #444;
+  }
+  
+  .Deck-gimme:active,
+  .Deck-gimme:focus {
+    outline: none;
+  }
+  
+  .Deck-cardarea {
+    margin-top: 80px;
+  }
+
+
+  body {
+    background-color: green;
+  }
+  
