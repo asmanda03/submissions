@@ -1,0 +1,91 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .DogDetails img {
+    max-width: 50%;
+    border-radius: 5%;
+    margin-top: 1rem;
+  }
+  
+
+  .DogList img {
+    width: 75%;
+    border-radius: 100%;
+    border: 8px solid slateblue;
+    box-shadow: 0 0 10px #9e9e9e;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+  nav {
+    background-color: slateblue;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  nav a {
+    padding: 0.5em 0;
+    width: 12em;
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+  }
+  
+  nav a.active {
+    color: rgb(53, 53, 53);
+    text-decoration: none;
+  }
+  
+  nav a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  
+  
